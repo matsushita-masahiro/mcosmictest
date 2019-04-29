@@ -1,0 +1,64 @@
+<!--header-->
+<div class="header-image">
+  <div class="container text-center">
+    <h1 class="text-main">m☆COSMIC</h1>
+    <br>
+    <% if !user_signed_in? %> 
+    
+      <%= link_to "無料登録", new_user_registration_path, class:"singup btn btn-info" %>
+      <%= link_to "ログイン", new_user_session_path, class:"singin btn btn-success" %>
+    <% end %>
+  </div>
+</div>
+
+<!--func-->
+
+<div class="top-comment flex-box">
+  <div>
+      <p class="title">m☆COSMIC</p>
+  </div>
+  <div class="item">
+      <% text = "m☆COSMIC をご利用
+            ありがとうございます
+            2019年 2月 3日より
+            メタトロン最新機種
+            「WELL BEING」になりました
+            
+            施術代は変えませんので安心して下さい
+            
+            ご予約はカレンダーを確認お願いします
+            空き時間が表示されますので
+            LINEかFacebookメッセージで
+            問合せお願いします
+            返信をもって予約完了としますので、
+            返信がない場合は、電話か再度申込
+            お願いします
+            
+            「必ずお読みください」もチェック
+            お願いします
+            
+            キャンセル、変更は２日前までにお願いします
+            前日、当日キャンセルは全額頂きますので
+            お気をつけください
+            
+            ⚠️FacebookやインスタなどのSNSに
+            メタトロンの画像を載せるのは薬事法で
+            禁止されていますので、掲載されている人は
+            写真の削除お願いします"%>
+  <%= simple_format(text) %>
+            
+  </div>
+</div>
+
+    
+    
+    
+</div>
+
+
+
+<!--footer-->
+
+
+ 
+

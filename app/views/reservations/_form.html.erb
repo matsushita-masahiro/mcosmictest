@@ -1,0 +1,61 @@
+<div class="modal-dialog modal-lg">
+ <div class="modal-content">
+    <div class="container">
+        <%= form_for @reservation, :url => {:action => "create" }, :data => {:remote => true} do |f| %>
+            <%= render "shared/error_messages", model: @reservation %>
+            
+            <div class="input-wrapper">
+                <div class="label-field">
+                    <span>氏名</span>
+                </div>
+                <div class="input-field">
+                    <%= current_user.name %>
+                </div>
+            </div>
+            
+  
+            
+            <div class="input-wrapper">
+                <div class="label-field">
+                    <span>性別</span>
+                </div>
+                <div class="input-field">
+                    <%= Global::GENDER[current_user.gender] %>
+                </div>
+            </div>
+            
+            <div class="input-wrapper">
+                <div class="label-field">
+                    <span>電話番号</span>
+                </div>
+                <div class="input-field">
+                   <%= current_user.tel %>           
+                </div>
+            </div>
+            
+            <div class="input-wrapper">
+                <div class="label-field">
+                    <span>予約日時</span>
+                </div>
+                <div class="input-field">
+                   <%= @date.to_date.strftime("%Y年 %-m月 %-d日") %>(<%= Global::WEEKDAY[@date.to_date.wday] %>)　<%= @frame %>:00〜        
+                </div>
+            </div>
+            <div class="input-wrapper">
+                <div class="label-field">
+                    <span>備考</span>
+                </div>
+                <div class="input-field">
+                   <%= f.text_area :remarks %>           
+                </div>
+            </div>
+                <%= f.hidden_field :reserved_date, :value => @date %>
+                <%= f.hidden_field :reserved_frame, :value => @frame %>
+                <%= f.hidden_field :user_id, :value => current_user.id %>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">キャンセル</button>
+                <%= button_to "予約を確定", {action: 'create'}, {method: :post, class: "btn btn-primary"} %>
+                <%= button_to "お休み", {action: 'create'}, {method: :post, class: "btn btn-danger"} %>
+        <% end %>
+    </div>   
+  </div>
+</div>

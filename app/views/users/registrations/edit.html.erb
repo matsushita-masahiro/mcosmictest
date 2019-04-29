@@ -1,0 +1,69 @@
+<div class="container edit">
+<h2>登録</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field email">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, :class => "form-control my-form" %>
+  </div>
+
+  
+  <div class="field name">
+    <%= f.label :氏名 %><br />
+    <%= f.text_field :name, required: true, :class => "form-control my-form", autocomplete: "name" %>
+  </div>
+
+  <div class="field name_kana">
+    <%= f.label :氏名かな %><br />
+    <%= f.text_field :name_kana, required: true, :class => "form-control my-form", autocomplete: "name_kana" %>
+  </div>
+
+  <div class="field tel">
+    <%= f.label :電話番号 %><br />
+    <%= f.text_field :tel, required: true, :class => "form-control my-form", autocomplete: "tel" %>
+  </div>
+
+  <div class="field gender">
+    <%= f.label :性別 %><br />
+    <%= f.radio_button :gender, "m", required: true %>　男性
+    <%= f.radio_button :gender, "f" %>　女性
+  </div>
+
+  <div class="field birthday">
+    <%= f.label :生年月日 %><br />
+    <%= f.date_field :birthday, required: true, :class => "form-control my-form", autocomplete: "birthday" %>
+  </div>
+
+  <div class="field introducer">
+    <%= f.label :紹介者 %><br />
+    <%= f.text_field :introducer, required: true, :class => "form-control my-form", autocomplete: "introducer" %>
+  </div>
+  
+<!--管理者のみユーザータイプ変更できる-->
+  <% if current_user.user_type == "a" %>
+    <div class="field user_type">
+      <%= f.label :ユーザータイプ %><br />
+      <%= f.select :user_type, {"タイプ１" => "1", "タイプ２" => "2", "タイプ３" => "3", "タイプ４" => "4", "タイプ５" => "5", "タイプ６" => "6"} %>
+  
+    </div>
+  <% end %> 
+
+
+  <div class="field password">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", :class => "form-control my-form" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update", class:"btn btn-primary" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>
+</dir>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mcosmic</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  </head>-->
+
+  <body>
+      <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">m☆COSMIC</a>
+          </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <% if current_user %>
+                  <li><%= link_to '予約', reservations_path %></li>
+                  <li><%= link_to 'MY予約', reservations_my_reserved_path %></li>
+              <% end %>
+               <li><%= link_to '必ずお読みください', home_readme_path %></li>
+
+            <% if user_signed_in? %> 
+                             <!--signout-->
+               　<% if User.find(current_user.id).user_type == "a" %>
+                    <li><%= link_to "お客様一覧", users_path %></li>
+               　<% end %>
+               <li><%= link_to  destroy_user_session_path, :method => :delete do %>ログアウト <i class="fas fa-sign-out-alt"></i><% end %></li>
+               <li><%= link_to "#{User.find(current_user.id).name}", edit_user_registration_path(current_user.id) %></li>
+               
+             <% else %>
+               <li><%= link_to "新規登録", new_user_registration_path %></li>
+               <li><%= link_to "ログイン", new_user_session_path %></li> 
+             
+             
+             <% end %>
+               
+            </ul>
+            </div>
+        </div>
+      </nav>
+    <div class="main-page">
+      <%= yield %>
+    </div>
+  </body>
+</html>

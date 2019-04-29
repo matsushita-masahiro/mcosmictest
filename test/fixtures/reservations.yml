@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  reserved_date: 2019-04-12
+  reserved_frame: MyString
+  reserved_menu: MyString
+
+two:
+  user_id: 1
+  reserved_date: 2019-04-12
+  reserved_frame: MyString
+  reserved_menu: MyString
