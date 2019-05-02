@@ -24,8 +24,13 @@
                   <td><%= user.birthday %></td>
                   <td><%= Global::GENDER[user.gender] %></td>
                   <td><%= user.introducer %></td>
-                  <td><%= UserType.find(user.user_type).type_name %></td>
-                  <td class="price"><%= UserType.find(user.user_type).price %></td>
+                  <% if user.user_type.present? %>
+                    <td><%= UserType.find(user.user_type).type_name %></td>
+                    <td class="price"><%= UserType.find(user.user_type).price %></td>
+                  <% else %>
+                    <td>---</td>
+                    <td class="price">---</td>
+                  <% end %>
                </tr>
             <% end %>
           </tbody>
