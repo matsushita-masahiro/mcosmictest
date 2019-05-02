@@ -86,7 +86,7 @@ class ReservationsController < ApplicationController
     private
         
         def reservation_params
-            params.require(:reservation).permit(:user_id, :reserved_date, :remarks, :reserved_frame)
+            params.require(:reservation).permit(:user_id, :reserved_date, :remarks, :reserved_space)
         end
         
         def pre_process_params

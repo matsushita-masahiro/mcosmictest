@@ -50,7 +50,7 @@
                 </div>
             </div>
                 <%= f.hidden_field :reserved_date, :value => @date %>
-                <%= f.hidden_field :reserved_frame, :value => @frame %>
+                <%= f.hidden_field :reserved_space, :value => @frame %>
                 <%= f.hidden_field :user_id, :value => current_user.id %>
                 <button type="button" class="btn btn-warning" data-dismiss="modal">キャンセル</button>
                 <%= button_to "予約を確定", {action: 'create'}, {method: :post, class: "btn btn-primary"} %>

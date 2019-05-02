@@ -13,8 +13,8 @@
             <% @reservations.each do |reservation| %>
                <tr>
                   <td><%= reservation.reserved_date %></td>
-                  <td><%= reservation.reserved_frame %>:00</td>
-                  <td><%= link_to "削除", "/reservations/#{reservation.id}", :method => "delete", data: { confirm: "#{reservation.reserved_date}⇨#{reservation.reserved_frame}:00の予約を削除しますか？" } %></td>
+                  <td><%= reservation.reserved_space %>:00</td>
+                  <td><%= link_to "削除", "/reservations/#{reservation.id}", :method => "delete", data: { confirm: "#{reservation.reserved_date}⇨#{reservation.reserved_space}:00の予約を削除しますか？" } %></td>
                </tr>
             <% end %>
           </tbody>
