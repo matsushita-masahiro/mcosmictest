@@ -3,7 +3,7 @@ $("#user-modal").html("<%= escape_javascript(render 'form') %>")
 $("#user-modal").modal("show")
 
 <% if @date.present? %>
-    var dateField = document.getElementById("reservation_date");
+    var dateField = document.getElementById("reserved_date");
     dateField.value = '<%= @date %>';
 <% end %>
 var modal = document.getElementById("reserveModal");

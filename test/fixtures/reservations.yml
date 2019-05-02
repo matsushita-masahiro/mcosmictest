@@ -1,13 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id: 1
-  reserved_date: 2019-04-12
-  reserved_frame: MyString
-  reserved_menu: MyString
-
-two:
-  user_id: 1
-  reserved_date: 2019-04-12
-  reserved_frame: MyString
-  reserved_menu: MyString
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value
