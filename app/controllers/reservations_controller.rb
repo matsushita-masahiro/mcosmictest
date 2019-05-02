@@ -30,7 +30,11 @@ class ReservationsController < ApplicationController
     # ここから
     
     def my_reserved
-        @reservations = Reservation.where('user_id = ? and reserved_date >= ?',current_user.id, Date.today)
+        if User.find(current_user.id).user_type == "1"
+            @reservations = Reservation.where('reserved_date >= ?', Date.today)
+        else 
+            @reservations = Reservation.where('user_id = ? and reserved_date >= ?',current_user.id, Date.today)
+        end
         @reservations.each do |reservation|
             logger.debug("============================  @reservations = #{reservation.reserved_date}")
         end

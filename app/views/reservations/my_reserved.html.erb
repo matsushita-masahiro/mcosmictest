@@ -6,7 +6,9 @@
             <tr>
               <th scope="col">日付</th>
               <th scope="col">時間</th>
-              <th scope="col">Action</th>
+              <% if User.find(current_user.id).user_type == "1" %>
+               <th scope="col">Action</th>
+              <% end %>
             </tr>
           </thead>
           <tbody>
@@ -14,7 +16,9 @@
                <tr>
                   <td><%= reservation.reserved_date %></td>
                   <td><%= reservation.reserved_space %>:00</td>
-                  <td><%= link_to "削除", "/reservations/#{reservation.id}", :method => "delete", data: { confirm: "#{reservation.reserved_date}⇨#{reservation.reserved_space}:00の予約を削除しますか？" } %></td>
+                  <% if User.find(current_user.id).user_type == "1" %>
+                    <td><%= link_to "削除", "/reservations/#{reservation.id}", :method => "delete", data: { confirm: "#{reservation.reserved_date}⇨#{reservation.reserved_space}:00の予約を削除しますか？" } %></td>
+                  <% end %>
                </tr>
             <% end %>
           </tbody>
