@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -25,6 +25,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     logger.debug("====================== update")
     super
+      @user = User.last
+      # if @user.email == ENV['USER_EMAIL']
+      @user = User.last
+      logger.debug("====================== update user = #{@user.email}")
+      if @user.email == "mstarcosmic@gmail.com"
+         @user.user_type = "1"
+         flash[:notice] = "管理者登録できました"  
+      end
+      if @user.save
+        SignupMailer.send_when_signup(@user).deliver
+        SignupMailer.send_when_signup_admin(@user).deliver
+      end
+
   end
 
   # DELETE /resource
@@ -44,9 +57,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :name_kana, :tel, :birthday, :gender, :introducer])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params

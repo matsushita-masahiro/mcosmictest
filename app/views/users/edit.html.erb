@@ -1,8 +1,7 @@
 <div class="container edit">
 <h2>登録</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, autocomplete: 'off') do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= form_for @user do |f| %>
 
   <div class="field email">
     <%= f.label :email %><br />
@@ -42,7 +41,7 @@
   </div>
   
 <!--管理者のみユーザータイプ変更できる-->
-  <% if current_user.user_type == "a" %>
+  <% if current_user.user_type == "1" %>
     <div class="field user_type">
       <%= f.label :ユーザータイプ %><br />
       <%= f.select :user_type, UserType.all.map{|t| [t.type_name, t.id]}, :include_blank => true %>
@@ -50,19 +49,10 @@
   <% end %> 
 
 
-  <div class="field password">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password", :class => "form-control my-form" %>
-  </div>
-
   <div class="actions">
-    <%= f.submit "Update", class:"btn btn-primary" %>
+    <%= f.submit "更新", class:"btn btn-primary" %>
   </div>
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
 </dir>

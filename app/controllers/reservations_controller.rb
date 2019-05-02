@@ -18,7 +18,7 @@ class ReservationsController < ApplicationController
     
     def index
         if current_user
-            if User.find(current_user.id).user_type == "a"
+            if User.find(current_user.id).user_type == "1"
                 @reservations = Reservation.all
             else 
                 @reservations = Reservation.where(user_id: current_user.id)
@@ -45,11 +45,12 @@ class ReservationsController < ApplicationController
         
         respond_to do |format|
           if @reservation.save
-    　　　　SampleMailer.send_when_create(@reservation,@user).deliver
-            format.html { redirect_to @reservation, notice: 'User was successfully created.' }
-            format.json { render :show, status: :created, location: @reservation }
+            SampleMailer.send_when_create(@reservation,@user).deliver
+            AdminMailer.send_when_reserved(@reservation).deliver
+            format.html { redirect_to reservations_path, notice: 'User was successfully created.' }
+            format.json { render :index, status: :created, location: @reservation }
           else
-            format.html { render :new }
+            format.html { render :index }
             format.json { render json: @reservation.errors, status: :unprocessable_entity }
           end
         end
@@ -68,8 +69,8 @@ class ReservationsController < ApplicationController
     
 
 
-        logger.debug("============================create reserve_date  = #{params[:reservation][:reserved_date]}")
-        redirect_to reservations_path
+        # logger.debug("============================create reserve_date  = #{params[:reservation][:reserved_date]}")
+        # redirect_to reservations_path
     end
     
     def destroy

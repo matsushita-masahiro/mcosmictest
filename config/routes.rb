@@ -8,7 +8,8 @@ Rails.application.routes.draw do
       :sessions => 'users/sessions'
    }
    
-   resources :users, :only => [:index, :show]
+   
+   resources :users, :only => [:index, :edit, :update]
    get '/reservations/my_reserved' => 'reservations#my_reserved'
    resources :reservations
    resources :user_types

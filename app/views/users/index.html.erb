@@ -11,18 +11,21 @@
               <th scope="col">性別</th>
               <th scope="col">紹介者</th>
               <th scope="col">タイプ</th>
+              <th scope="col">料金</th>
+              
             </tr>
           </thead>
           <tbody>
             <% @users.each do |user| %>
                <tr>
-                  <td><%= user.name %></td>
+                  <td><%= link_to user.name, "/users/#{user.id}/edit" %></td>
                   <td><%= user.email %></td>
                   <td><%= user.tel %></td>
                   <td><%= user.birthday %></td>
                   <td><%= Global::GENDER[user.gender] %></td>
                   <td><%= user.introducer %></td>
-                  <td><%= user.user_type %></td>
+                  <td><%= UserType.find(user.user_type).type_name %></td>
+                  <td class="price"><%= UserType.find(user.user_type).price %></td>
                </tr>
             <% end %>
           </tbody>
