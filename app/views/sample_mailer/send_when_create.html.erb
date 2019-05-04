@@ -4,10 +4,8 @@
   <meta content="text/html; charset=UTF-8" />
 </head>
 <body>
-  <h2><%= @user.name %> 様</h2>
-    <hr />
-      <p><%= @user.name %>さん</p>
-      <p>下記予約を承りました。</p>
+      <p><%= @user.name %>様　ご予約有難う御座います</p>
+      <p>下記内容で承りました。</p>
       <p><%= @reservation.reserved_date.strftime("予約日時 %Y-%m-%d ➡︎ ") %><%= @reservation.reserved_space %>時〜</p>
       <p>備考 <%= @reservation.remarks %></p>
       <hr style="border-top: 2px dashed black; margin-left: 1px; width: 200px;">

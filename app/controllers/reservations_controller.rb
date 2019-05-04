@@ -50,7 +50,7 @@ class ReservationsController < ApplicationController
         respond_to do |format|
           if @reservation.save
             SampleMailer.send_when_create(@reservation,@user).deliver
-            AdminMailer.send_when_reserved(@reservation).deliver
+            AdminMailer.send_when_reserved(@reservation,@user).deliver
             format.html { redirect_to reservations_path, notice: 'User was successfully created.' }
             format.json { render :index, status: :created, location: @reservation }
           else
