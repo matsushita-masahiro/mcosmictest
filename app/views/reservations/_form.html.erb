@@ -54,7 +54,10 @@
                 <%= f.hidden_field :user_id, :value => current_user.id %>
                 <button type="button" class="btn btn-warning" data-dismiss="modal">キャンセル</button>
                 <%= button_to "予約を確定", {action: 'create'}, {method: :post, class: "btn btn-primary"} %>
-                <%= button_to "お休み", {action: 'create'}, {method: :post, class: "btn btn-danger"} %>
+                <!-- 管理者なら休日ボタンを表示 -->
+                <% if User.find(current_user.id).user_type == "1"  %>
+                  <%= link_to "お休み", "/reservations/make_holiday/#{@date}/#{@frame}", {method: :post, class: "btn btn-danger"} %>
+                <% end %>
         <% end %>
     </div>   
   </div>

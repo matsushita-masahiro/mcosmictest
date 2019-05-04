@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20190502214659) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "user_id"       # 0 は休み
     t.date     "reserved_date"
-    t.string   "reserved_space"
+    t.string   "reserved_space" # frame
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.text     "remarks"

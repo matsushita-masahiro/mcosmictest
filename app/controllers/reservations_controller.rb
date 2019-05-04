@@ -40,6 +40,19 @@ class ReservationsController < ApplicationController
         end
     end
     
+    def make_holiday
+        
+        @reservation = Reservation.new(user_id: 0,reserved_date: params[:date],reserved_space: params[:space], remarks: "休み")
+
+        if @reservation.save
+            flash[:notice] = "#{params[:date]}の#{params[:space]}}を休みにしました"
+            redirect_to reservations_path
+        else
+            flash[:notice] = "休み入力できませんでした"
+            render "reservations/index"
+        end
+    end
+    
     
     def create
         
@@ -92,6 +105,7 @@ class ReservationsController < ApplicationController
         def reservation_params
             params.require(:reservation).permit(:user_id, :reserved_date, :remarks, :reserved_space)
         end
+        
         
         def pre_process_params
             params[:reservation][:sex] = params[:reservation][:sex].to_i

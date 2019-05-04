@@ -1,43 +1,48 @@
 // Place all the styles related to the reservations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-.schedule {
-    text-decoration: none;
-    display: inline-block;
     
-}
-
-
-.modal-backdrop {
-    position: relative;
-    z-index: 1;
-}
-
-#user-modal > div > div > div{
-    position: relative;
-    z-index: 100;
-}
-
-.today {
-    background: #c0c0c0;
-}
-
-.calendar-title {
-    margin: 20px 0 0 0;
-}
-
-.tooltip-inner{
-  max-width: 100px;
-}
-
-#reservation_remarks {
-    width: 100%;
-}
-
-.my-reserved-title {
-    margin: 30px 0;
-}
+    .schedule {
+        text-decoration: none;
+        display: inline-block;
+        
+    }
+    
+    
+    .modal-backdrop {
+        position: relative;
+        z-index: 1;
+    }
+    
+    #user-modal > div > div > div{
+        position: relative;
+        z-index: 100;
+    }
+    
+    .today {
+        background: #c0c0c0;
+    }
+    
+    .calendar-title {
+        margin: 20px 0 0 0;
+    }
+    
+    .tooltip-inner{
+      max-width: 100px;
+    }
+    
+    #reservation_remarks {
+        width: 100%;
+    }
+    
+    .my-reserved-title {
+        margin: 30px 0;
+    }
+    
+    td.holiday {
+        color: red;
+    }
+    
 
 
 

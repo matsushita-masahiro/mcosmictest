@@ -10,10 +10,11 @@ Rails.application.routes.draw do
    
    
    resources :users, :only => [:index, :edit, :update]
-   get '/reservations/my_reserved' => 'reservations#my_reserved'
+   post 'reservations/make_holiday/:date/:space' => 'reservations#make_holiday'
+   get 'reservations/my_reserved' => 'reservations#my_reserved'
    resources :reservations
    resources :user_types
-   post '/reservations/confirm' => 'reservations#confirm'
+   post 'reservations/confirm' => 'reservations#confirm'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
