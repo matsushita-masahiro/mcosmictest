@@ -45,7 +45,7 @@ class ReservationsController < ApplicationController
         @reservation = Reservation.new(user_id: 0,reserved_date: params[:date],reserved_space: params[:space], remarks: "休み")
 
         if @reservation.save
-            flash[:notice] = "#{params[:date]}の#{params[:space]}}を休みにしました"
+            flash[:notice] = "#{params[:date].to_date.strftime("%Y年 %-m月 %-d日")}の#{params[:space]}時〜を休みにしました"
             redirect_to reservations_path
         else
             flash[:notice] = "休み入力できませんでした"
@@ -94,7 +94,7 @@ class ReservationsController < ApplicationController
         @reservation = Reservation.find(params[:id])
         if @reservation.destroy
             flash[:notice] = "予約を取り消しました"
-          redirect_to reservations_path
+          redirect_to reservations_my_reserved_path
         else 
           redirect_back(fallback_location: reservations_path)
         end
