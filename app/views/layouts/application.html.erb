@@ -52,14 +52,12 @@
         </div>
       </nav>
     <div class="main-page">
-       <div class="container notice" >
           <% if notice %>
             <p class = "alert alert-success"><%= notice %></p>
           <% end %>
           <% if alert %>
             <p class = "alert alert-danger"><%= alert %></p>
           <% end %>  
-        </div>
       <%= yield %>
     </div>
     

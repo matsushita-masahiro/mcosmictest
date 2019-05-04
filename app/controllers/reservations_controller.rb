@@ -64,7 +64,7 @@ class ReservationsController < ApplicationController
           if @reservation.save
             SampleMailer.send_when_create(@reservation,@user).deliver
             AdminMailer.send_when_reserved(@reservation,@user).deliver
-            format.html { redirect_to reservations_path, notice: 'User was successfully created.' }
+            format.html { redirect_to reservations_path, notice: "#{@reservation.reserved_date.to_date.strftime("%Y年 %-m月 %-d日")}の#{@reservation.reserved_space}時〜予約承りました" }
             format.json { render :index, status: :created, location: @reservation }
           else
             format.html { render :index }
