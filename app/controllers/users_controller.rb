@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   
   def index
     logger.debug("============================== 普通のuser_controller の　users index ")
-    @users = User.all
+    @users = User.where.not(id: 0).order(name: :DESC)
   end
 
   def show
