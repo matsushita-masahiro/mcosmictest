@@ -46,6 +46,16 @@
     .modal-content {
         width: 90%;
     }
+    
+    #user-modal {
+        z-index: 2;
+    }
+    
+    .main-page > .container {
+        z-index: 1;
+    }
+    
+
 
 
  

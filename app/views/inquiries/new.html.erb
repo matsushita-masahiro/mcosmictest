@@ -1,0 +1,30 @@
+<div class="container">
+<h2>お問い合わせ</h2>
+
+<%= form_for(@inquiry) do |f| %>
+
+    
+  <div class="field name">
+    <%= f.label :氏名 %><br />
+    <%= f.text_field :name, required: true, :class => "form-control my-form", autocomplete: 'name' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, required: true, :class => "form-control my-form", autocomplete: "email" %>
+  </div>
+  
+  
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content, autofocus: true, required: true, :class => "form-control my-form", autocomplete: "content" %>
+  </div>
+
+ 
+  
+  <div class="actions">
+    <%= f.submit "送信", class:"btn btn-primary" %>
+  </div>
+<% end %>
+
+</div>
