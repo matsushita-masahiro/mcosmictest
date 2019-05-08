@@ -31,9 +31,9 @@ class ReservationsController < ApplicationController
     
     def my_reserved
         if User.find(current_user.id).user_type == "1"
-            @reservations = Reservation.where('reserved_date >= ?', Date.today)
+            @reservations = Reservation.where('reserved_date >= ?', Date.today).order(:reserved_date).order(:reserved_space)
         else 
-            @reservations = Reservation.where('user_id = ? and reserved_date >= ?',current_user.id, Date.today)
+            @reservations = Reservation.where('user_id = ? and reserved_date >= ?',current_user.id, Date.today).order(:reserved_date).order(:reserved_space)
         end
         @reservations.each do |reservation|
             logger.debug("============================  @reservations = #{reservation.reserved_date}")

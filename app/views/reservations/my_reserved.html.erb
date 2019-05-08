@@ -5,9 +5,10 @@
         <table class="table table-bordered table-schedule">
           <thead>
             <tr>
-              <th scope="col">日付</th>
+              <th scope="col">予約日付</th>
               <th scope="col">時間</th>
               <% if User.find(current_user.id).user_type == "1" %>
+               <th scope="col">予約者</th>
                <th scope="col">Action</th>
               <% end %>
             </tr>
@@ -18,6 +19,7 @@
                   <td><%= reservation.reserved_date %></td>
                   <td><%= reservation.reserved_space %>:00</td>
                   <% if User.find(current_user.id).user_type == "1" %>
+                    <td><%= User.find(reservation.user_id).name %></td>
                     <td><%= link_to "削除", "/reservations/#{reservation.id}", :method => "delete", data: { confirm: "#{reservation.reserved_date}⇨#{reservation.reserved_space}:00の予約を削除しますか？" } %></td>
                   <% end %>
                </tr>

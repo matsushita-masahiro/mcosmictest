@@ -5,8 +5,8 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-            <% 12.times do |i| %>
-              <th scope="col"><%= i+9 %>時</th>
+            <% 13.times do |i| %>
+              <th scope="col"><%= i+10 %>時</th>
             <% end %>
              
             </tr>
@@ -19,12 +19,12 @@
               <!-- 明日以降  -->
                 <tr>
                   <th scope="row"><%= (d+i).strftime("%-m/%d") %>　(<%= Global::WEEKDAY[(d+i).wday.to_i] %>)</th>
-                  <% 12.times do |j| %>
-                    <% if @reserved = reserved_check((d+i),(j+9)) %>
+                  <% 13.times do |j| %>
+                    <% if @reserved = reserved_check((d+i),(j+10)) %>
                       <% if User.find(current_user.id).user_type == "1" && @reserved.user_id != 0 %>
                       <!-- 予約の備考最初の10バイトを切り取る-->
                         <% if @reserved.remarks %>
-                         <% remarks = @reserved.remarks[0..12] %>
+                         <% remarks = @reserved.remarks[0..13] %>
                         <% else %>
                          <% remarks = "" %>
                         <% end %>
@@ -42,7 +42,7 @@
                         <% end %>
                       <% end %>
                     <% else %>
-                      <td align="center"><%= link_to "◎", new_reservation_path(date: (d+i),frame: (j+9)), remote: true, class: "schedule open-modal" %></td>
+                      <td align="center"><%= link_to "◎", new_reservation_path(date: (d+i),frame: (j+10)), remote: true, class: "schedule open-modal" %></td>
                       <div id="user-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
                     <% end %>
                   <% end %>
@@ -51,8 +51,8 @@
               <!-- 今日  -->
                 <tr class="today">
                   <th scope="row"><%= (d+i).strftime("%-m/%d") %>　(<%= Global::WEEKDAY[(d+i).wday.to_i] %>)</th>
-                  <% 12.times do |j| %>
-                    <% if @reserved = reserved_check((d+i),(j+9)) %>
+                  <% 13.times do |j| %>
+                    <% if @reserved = reserved_check((d+i),(j+10)) %>
                     <!-- 管理者のみ予約済み内容を吹き出しで表示 -->
   　　　　　　　　　　          <% if User.find(current_user.id).user_type == "1" %>
                       　<td align="center" id="reserved" data-toggle="tooltip" data-html="true" title="<%= User.find(@reserved.user_id).name %><br><%= User.find(@reserved.user_id).tel %>", data-container="body">✖️</td>
