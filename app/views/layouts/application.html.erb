@@ -52,9 +52,7 @@
                  <li><%= link_to "ログイン", new_user_session_path %></li> 
               <% end %>
               
-                  <% if !user_signed_in? || (user_signed_in? && User.find(current_user.id).user_type != "1") %>
                     <li><%= link_to "お問合せ", new_inquiry_path %></li>
-                  <% end %>
 
                
             </ul>
