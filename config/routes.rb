@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
 
 
+
+
   root 'home#top'
   get 'home/readme' => 'home#readme'
   devise_for :users, :controllers => {
@@ -18,7 +20,11 @@ Rails.application.routes.draw do
    resources :user_types
    post 'reservations/confirm' => 'reservations#confirm'
    
+   get 'inquiries/:id/answer' => 'inquiries#answer'
    resources :inquiries
+   
+   get 'answers/:id/new' => 'answers#new'
+   resources :answers, :only => [:create, :show, :index]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -15,6 +15,9 @@
  *= require_self
  */
  
+ body {
+  margin-top: 50px;
+ }
  
  .main-page{
     margin-top:50px;
@@ -26,14 +29,22 @@
   text-align: center;
  }
  
- .constraction {
+ .construction {
      text-align: center;
-     margin: 270px auto;
+     margin: 200px auto;
   }
  
  .alert {
-  margin: 70px 11%;
+  float: right;
+  z-index: 1000;
+  margin: 10px 5% 0 0;
  }
-    
+ 
+ .header-image {
+  /*margin-top: -50px;*/
+  /*z-index: 2;*/
+ }
+ 
+
 
  

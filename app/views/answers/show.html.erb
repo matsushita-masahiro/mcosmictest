@@ -1,7 +1,6 @@
 <div class="container">
-<h3>送信内容</h3>
+<h3>お問合せへの回答内容</h3>
 
-    
   <div class="field name">
     <span class="Heading">氏名</span><br />
     <p><%= @inquiry.name %></p>
@@ -15,8 +14,17 @@
   
   <div class="field">
     <span class="Heading">内容</span>
-    <%= simple_format(@inquiry.content) %>
+    <p><%= @inquiry.content %></p>
   </div>
-
-
+  
+  <p>-------------------------------------</p>
+  
+  <div class="fieid">
+    <span class="Heading">回答内容</span>
+      <p><%= simple_format(@answer.comment) %></p>
+      
+  </div>
+  
+  
+  
 </div>

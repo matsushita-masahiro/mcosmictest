@@ -1,5 +1,5 @@
 <div class="container">
-<h2>お問い合わせ</h2>
+<h3>お問い合わせ</h3>
 
 <%= form_for(@inquiry) do |f| %>
 
@@ -16,15 +16,16 @@
   
   
   <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content, autofocus: true, required: true, :class => "form-control my-form", autocomplete: "content" %>
+    <%= f.label :お問合せ内容 %><br />
+    <%= f.text_area :content, :size => "20x10", autofocus: true, required: true, :class => "form-control my-form", autocomplete: "content" %>
   </div>
 
  
   
   <div class="actions">
-    <%= f.submit "送信", class:"btn btn-primary" %>
+    <%= f.submit "送信", data: { confirm: "送信してOKですか？"}, class:"btn btn-primary" %>
   </div>
 <% end %>
+
 
 </div>
