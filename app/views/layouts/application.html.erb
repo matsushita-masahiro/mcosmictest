@@ -42,13 +42,19 @@
                  <% else %>
                    <li><%= link_to "マイページ", edit_user_registration_path(current_user.id) %></li>
                  <% end %>
-
+                 
+                   <% if User.find(current_user.id).user_type == "1" %>
+                      <li><%= link_to "お問合せ一覧", inquiries_path %></li>
+                 　<% end %>
                  　
               <% else %>
                  <li><%= link_to "新規登録", new_user_registration_path %></li>
                  <li><%= link_to "ログイン", new_user_session_path %></li> 
               <% end %>
               
+                  <% if !user_signed_in? || (user_signed_in? && User.find(current_user.id).user_type != "1") %>
+                    <li><%= link_to "お問合せ", new_inquiry_path %></li>
+                  <% end %>
 
                
             </ul>
