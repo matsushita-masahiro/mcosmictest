@@ -1,4 +1,4 @@
-
+UserType.delete_all
 UserType.seed(:id,
   {:id => 1, :type_name => "管理者", :price => 0 },
   {:id => 2, :type_name => "既存＆distributor", :price => 9000 },
